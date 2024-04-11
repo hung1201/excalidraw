@@ -788,12 +788,77 @@ export const actionChangeFontFamily = register({
       },
     ];
 
+    const options2: {
+      value: FontFamilyValues;
+      text: string;
+      icon: JSX.Element;
+      testId: string;
+    }[] = [
+      {
+        value: FONT_FAMILY.Roboto,
+        text: "Roboto",
+        icon: <>Ro</>,
+        testId: "font-family-code",
+      },
+      {
+        value: FONT_FAMILY.Ubuntu,
+        text: "Ubuntu",
+        icon: <>Ub</>,
+        testId: "font-family-normal",
+      },
+      {
+        value: FONT_FAMILY.Noto,
+        text: "Noto",
+        icon: <>No</>,
+        testId: "font-family-code",
+      },
+      {
+        value: FONT_FAMILY.Montserrat,
+        text: "Montserrat",
+        icon: <>Mo</>,
+        testId: "font-family-code",
+      },
+    ];
+
     return (
       <fieldset>
         <legend>{t("labels.fontFamily")}</legend>
         <ButtonIconSelect<FontFamilyValues | false>
           group="font-family"
           options={options}
+          value={getFormValue(
+            elements,
+            appState,
+            (element) => {
+              if (isTextElement(element)) {
+                return element.fontFamily;
+              }
+              const boundTextElement = getBoundTextElement(
+                element,
+                app.scene.getNonDeletedElementsMap(),
+              );
+              if (boundTextElement) {
+                return boundTextElement.fontFamily;
+              }
+              return null;
+            },
+            (element) =>
+              isTextElement(element) ||
+              getBoundTextElement(
+                element,
+                app.scene.getNonDeletedElementsMap(),
+              ) !== null,
+            (hasSelection) =>
+              hasSelection
+                ? null
+                : appState.currentItemFontFamily || DEFAULT_FONT_FAMILY,
+          )}
+          onChange={(value) => updateData(value)}
+        />
+        <div style={{ height: "10px" }} />
+        <ButtonIconSelect<FontFamilyValues | false>
+          group="font-family"
+          options={options2}
           value={getFormValue(
             elements,
             appState,
