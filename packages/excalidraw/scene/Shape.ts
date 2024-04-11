@@ -454,7 +454,7 @@ export const _generateElementShape = (
 
       if (isPathALoop(element.points)) {
         // generate rough polygon to fill freedraw shape
-        const simplifiedPoints = simplify(element.points, 0.75);
+        const simplifiedPoints = simplify(element.points as any, 0.75);
         shape = generator.curve(simplifiedPoints as [number, number][], {
           ...generateRoughOptions(element),
           stroke: "none",
