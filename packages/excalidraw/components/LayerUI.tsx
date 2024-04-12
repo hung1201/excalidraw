@@ -110,9 +110,9 @@ const DefaultMainMenu: React.FC<{
       <MainMenu.DefaultItems.Help />
       <MainMenu.DefaultItems.ClearCanvas />
       <MainMenu.Separator />
-      <MainMenu.Group title="Excalidraw links">
+      {/* <MainMenu.Group title="Excalidraw links">
         <MainMenu.DefaultItems.Socials />
-      </MainMenu.Group>
+      </MainMenu.Group> */}
       <MainMenu.Separator />
       <MainMenu.DefaultItems.ToggleTheme />
       <MainMenu.DefaultItems.ChangeCanvasBackground />
@@ -332,6 +332,7 @@ const LayerUI = ({
             </Section>
           )}
           <div
+            style={{ display: "none" }}
             className={clsx(
               "layer-ui__wrapper__top-right zen-mode-transition",
               {
