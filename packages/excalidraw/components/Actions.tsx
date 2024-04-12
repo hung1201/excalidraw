@@ -385,7 +385,7 @@ export const ShapesSwitcher = ({
           >
             {t("toolBar.mermaidToExcalidraw")}
           </DropdownMenu.Item>
-          {app.props.aiEnabled !== false && (
+          {/* {app.props.aiEnabled !== false && (
             <>
               <DropdownMenu.Item
                 onSelect={() => app.onMagicframeToolSelect()}
@@ -410,7 +410,7 @@ export const ShapesSwitcher = ({
                 {t("toolBar.magicSettings")}
               </DropdownMenu.Item>
             </>
-          )}
+          )} */}
         </DropdownMenu.Content>
       </DropdownMenu>
     </>
