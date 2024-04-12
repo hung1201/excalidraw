@@ -23,7 +23,7 @@
     "access": "public"
   },
   "description": "Excalidraw as a React component",
-  "repository": "https://github.com/excalidraw/excalidraw",
+  "repository": "https://github.com/hung1201/excalidraw",
   "license": "MIT",
   "keywords": [
     "excalidraw",
