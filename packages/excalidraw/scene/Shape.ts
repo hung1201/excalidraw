@@ -1,5 +1,5 @@
 import type { Drawable, Options } from "roughjs/bin/core";
-import type { RoughGenerator } from "roughjs/bin/generator.js"";
+import type { RoughGenerator } from "roughjs/bin/generator.js";
 import { getDiamondPoints, getArrowheadPoints } from "../element";
 import type { ElementShapes } from "./types";
 import type {
