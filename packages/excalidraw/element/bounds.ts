@@ -8,7 +8,7 @@ import {
   ElementsMap,
 } from "./types";
 import { distance2d, rotate, rotatePoint } from "../math";
-import rough from "roughjs/bin/rough";
+import rough from "roughjs/bin/rough.js";
 import { Drawable, Op } from "roughjs/bin/core";
 import { AppState, Point } from "../types";
 import { generateRoughOptions } from "../scene/Shape";

@@ -27,7 +27,7 @@ import {
 } from "../scene/types";
 import { distance, getFontString, isRTL } from "../utils";
 import { getCornerRadius, isRightAngle } from "../math";
-import rough from "roughjs/bin/rough";
+import rough from "roughjs/bin/rough.js";
 import {
   AppState,
   StaticCanvasAppState,

@@ -1,5 +1,5 @@
 import { Drawable } from "roughjs/bin/core";
-import { RoughGenerator } from "roughjs/bin/generator";
+import { RoughGenerator } from "roughjs/bin/generator.js"";
 import {
   ExcalidrawElement,
   ExcalidrawSelectionElement,
