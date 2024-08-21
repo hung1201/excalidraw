@@ -176,6 +176,7 @@ export type StaticCanvasAppState = Readonly<
     gridSize: AppState["gridSize"];
     frameRendering: AppState["frameRendering"];
     viewBackgroundImage: AppState["viewBackgroundImage"] | null;
+    ratioBackgroundImage: AppState["ratioBackgroundImage"] | null;
   }
 >;
 
@@ -262,6 +263,7 @@ export interface AppState {
   currentItemRoundness: StrokeRoundness;
   viewBackgroundColor: string;
   viewBackgroundImage: string | null;
+  ratioBackgroundImage: number | null;
   scrollX: number;
   scrollY: number;
   cursorButton: "up" | "down";

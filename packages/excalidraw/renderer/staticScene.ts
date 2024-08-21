@@ -192,6 +192,7 @@ const _renderStaticScene = ({
     isExporting,
     viewBackgroundColor: appState.viewBackgroundColor,
     viewBackgroundImage: appState.viewBackgroundImage,
+    ratioBackgroundImage: appState.ratioBackgroundImage,
   });
 
   // Apply zoom

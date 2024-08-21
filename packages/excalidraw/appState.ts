@@ -90,6 +90,7 @@ export const getDefaultAppState = (): Omit<
     toast: null,
     viewBackgroundColor: COLOR_PALETTE.white,
     viewBackgroundImage: null,
+    ratioBackgroundImage: null,
     zenModeEnabled: false,
     zoom: {
       value: 1 as NormalizedZoomValue,

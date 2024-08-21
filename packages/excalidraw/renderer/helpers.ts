@@ -36,6 +36,7 @@ export const bootstrapCanvas = ({
   isExporting,
   viewBackgroundColor,
   viewBackgroundImage,
+  ratioBackgroundImage,
 }: {
   canvas: HTMLCanvasElement;
   scale: number;
@@ -45,6 +46,7 @@ export const bootstrapCanvas = ({
   isExporting?: StaticCanvasRenderConfig["isExporting"];
   viewBackgroundColor?: StaticCanvasAppState["viewBackgroundColor"];
   viewBackgroundImage?: StaticCanvasAppState["viewBackgroundImage"];
+  ratioBackgroundImage?: StaticCanvasAppState["ratioBackgroundImage"];
 }): CanvasRenderingContext2D => {
   const context = canvas.getContext("2d")!;
 
@@ -54,6 +56,8 @@ export const bootstrapCanvas = ({
   if (isExporting && theme === THEME.DARK) {
     context.filter = THEME_FILTER;
   }
+  const ratio = ratioBackgroundImage;
+  const canvasRatio = normalizedWidth / normalizedHeight;
   // if (!viewBackgroundColor || !viewBackgroundColor) {
   //   return context;
   // }
@@ -71,7 +75,27 @@ export const bootstrapCanvas = ({
     if (viewBackgroundImage) {
       const img = new Image();
       img.src = viewBackgroundImage;
-      context.drawImage(img, 0, 0, normalizedWidth, normalizedHeight);
+      if (ratio) {
+        if (ratio > canvasRatio) {
+          context.drawImage(
+            img,
+            -((ratio * normalizedHeight - normalizedWidth) / 2),
+            0,
+            ratio * normalizedHeight,
+            normalizedHeight,
+          );
+        } else {
+          context.drawImage(
+            img,
+            0,
+            -((normalizedWidth / ratio - normalizedHeight) / 2),
+            normalizedWidth,
+            normalizedWidth / ratio,
+          );
+        }
+      } else {
+        context.drawImage(img, 0, 0, normalizedWidth, normalizedHeight);
+      }
       context.save();
     } else {
       context.fillStyle = viewBackgroundColor;
@@ -83,7 +107,27 @@ export const bootstrapCanvas = ({
     if (viewBackgroundImage) {
       const img = new Image();
       img.src = viewBackgroundImage;
-      context.drawImage(img, 0, 0, normalizedWidth, normalizedHeight);
+      if (ratio) {
+        if (ratio > canvasRatio) {
+          context.drawImage(
+            img,
+            -((ratio * normalizedHeight - normalizedWidth) / 2),
+            0,
+            ratio * normalizedHeight,
+            normalizedHeight,
+          );
+        } else {
+          context.drawImage(
+            img,
+            0,
+            -((normalizedWidth / ratio - normalizedHeight) / 2),
+            normalizedWidth,
+            normalizedWidth / ratio,
+          );
+        }
+      } else {
+        context.drawImage(img, 0, 0, normalizedWidth, normalizedHeight);
+      }
       context.save();
     }
   }
