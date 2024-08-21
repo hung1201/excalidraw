@@ -175,6 +175,7 @@ export type StaticCanvasAppState = Readonly<
     selectedElementsAreBeingDragged: AppState["selectedElementsAreBeingDragged"];
     gridSize: AppState["gridSize"];
     frameRendering: AppState["frameRendering"];
+    viewBackgroundImage: AppState["viewBackgroundImage"] | null;
   }
 >;
 
@@ -260,6 +261,7 @@ export interface AppState {
   currentItemEndArrowhead: Arrowhead | null;
   currentItemRoundness: StrokeRoundness;
   viewBackgroundColor: string;
+  viewBackgroundImage: string | null;
   scrollX: number;
   scrollY: number;
   cursorButton: "up" | "down";

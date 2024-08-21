@@ -35,6 +35,7 @@ export const bootstrapCanvas = ({
   theme,
   isExporting,
   viewBackgroundColor,
+  viewBackgroundImage,
 }: {
   canvas: HTMLCanvasElement;
   scale: number;
@@ -43,6 +44,7 @@ export const bootstrapCanvas = ({
   theme?: AppState["theme"];
   isExporting?: StaticCanvasRenderConfig["isExporting"];
   viewBackgroundColor?: StaticCanvasAppState["viewBackgroundColor"];
+  viewBackgroundImage?: StaticCanvasAppState["viewBackgroundImage"];
 }): CanvasRenderingContext2D => {
   const context = canvas.getContext("2d")!;
 
@@ -52,7 +54,9 @@ export const bootstrapCanvas = ({
   if (isExporting && theme === THEME.DARK) {
     context.filter = THEME_FILTER;
   }
-
+  // if (!viewBackgroundColor || !viewBackgroundColor) {
+  //   return context;
+  // }
   // Paint background
   if (typeof viewBackgroundColor === "string") {
     const hasTransparence =
@@ -64,11 +68,24 @@ export const bootstrapCanvas = ({
       context.clearRect(0, 0, normalizedWidth, normalizedHeight);
     }
     context.save();
-    context.fillStyle = viewBackgroundColor;
-    context.fillRect(0, 0, normalizedWidth, normalizedHeight);
-    context.restore();
+    if (viewBackgroundImage) {
+      const img = new Image();
+      img.src = viewBackgroundImage;
+      context.drawImage(img, 0, 0, normalizedWidth, normalizedHeight);
+      context.save();
+    } else {
+      context.fillStyle = viewBackgroundColor;
+      context.fillRect(0, 0, normalizedWidth, normalizedHeight);
+      context.restore();
+    }
   } else {
     context.clearRect(0, 0, normalizedWidth, normalizedHeight);
+    if (viewBackgroundImage) {
+      const img = new Image();
+      img.src = viewBackgroundImage;
+      context.drawImage(img, 0, 0, normalizedWidth, normalizedHeight);
+      context.save();
+    }
   }
 
   return context;

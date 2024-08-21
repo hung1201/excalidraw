@@ -49,12 +49,19 @@ export const exportToCanvas = ({
     null,
     null,
   );
-  const { exportBackground, viewBackgroundColor } = restoredAppState;
+  const { exportBackground, viewBackgroundColor, viewBackgroundImage } =
+    restoredAppState;
   return _exportToCanvas(
     restoredElements,
     { ...restoredAppState, offsetTop: 0, offsetLeft: 0, width: 0, height: 0 },
     files || {},
-    { exportBackground, exportPadding, viewBackgroundColor, exportingFrame },
+    {
+      exportBackground,
+      exportPadding,
+      viewBackgroundColor,
+      viewBackgroundImage,
+      exportingFrame,
+    },
     (width: number, height: number) => {
       const canvas = document.createElement("canvas");
 
@@ -75,7 +82,15 @@ export const exportToCanvas = ({
 
         canvas.width = width * scale;
         canvas.height = height * scale;
-
+        // if (appState?.viewBackgroundImage) {
+        //   const context = canvas.getContext("2d")!;
+        //   const img = new Image();
+        //   img.src = appState.viewBackgroundImage;
+        //   context.drawImage(img, 0, 0, canvas.width, canvas.height);
+        //   context.save();
+        //   // const imgs = canvas.toDataURL("image/png");
+        //   // console.log("imgs", imgs);
+        // }
         return {
           canvas,
           scale,
@@ -86,7 +101,13 @@ export const exportToCanvas = ({
 
       canvas.width = ret.width;
       canvas.height = ret.height;
-
+      // if (appState?.viewBackgroundImage) {
+      //   const context = canvas.getContext("2d")!;
+      //   const img = new Image();
+      //   img.src = appState.viewBackgroundImage;
+      //   context.drawImage(img, 0, 0, canvas.width, canvas.height);
+      //   context.save();
+      // }
       return {
         canvas,
         scale: ret.scale ?? 1,

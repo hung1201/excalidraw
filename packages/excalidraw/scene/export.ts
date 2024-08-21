@@ -169,11 +169,13 @@ export const exportToCanvas = async (
     exportBackground,
     exportPadding = DEFAULT_EXPORT_PADDING,
     viewBackgroundColor,
+    viewBackgroundImage,
     exportingFrame,
   }: {
     exportBackground: boolean;
     exportPadding?: number;
     viewBackgroundColor: string;
+    viewBackgroundImage: string | null;
     exportingFrame?: ExcalidrawFrameLikeElement | null;
   },
   createCanvas: (
@@ -208,7 +210,16 @@ export const exportToCanvas = async (
   );
 
   const { canvas, scale = 1 } = createCanvas(width, height);
-
+  // // console.log("canvas", appState.viewBackgroundImage);
+  // if (appState.viewBackgroundImage) {
+  //   const context = canvas.getContext("2d")!;
+  //   const img = new Image();
+  //   img.src = appState.viewBackgroundImage;
+  //   context.drawImage(img, 0, 0, canvas.width, canvas.height);
+  //   context.save();
+  //   const imgs = canvas.toDataURL("image/png");
+  //   console.log(imgs);
+  // }
   const defaultAppState = getDefaultAppState();
 
   const { imageCache } = await updateImageCache({
@@ -406,6 +417,17 @@ export const exportToSvg = async (
     rect.setAttribute("fill", viewBackgroundColor);
     svgRoot.appendChild(rect);
   }
+  // console.log(" render background rect");
+  // const image = svgRoot.ownerDocument!.createElementNS(SVG_NS, "image");
+  // image.setAttribute("x", "0");
+  // image.setAttribute("y", "0");
+  // image.setAttribute("width", `${width}`);
+  // image.setAttribute("height", `${height}`);
+  // image.setAttribute(
+  //   "href",
+  //   "https://images.unsplash.com/photo-1504699439244-a7e34870c35d",
+  // );
+  // svgRoot.appendChild(image);
 
   const rsvg = rough.svg(svgRoot);
 
