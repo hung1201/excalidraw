@@ -33,6 +33,7 @@ export type StaticCanvasRenderConfig = {
   isExporting: boolean;
   embedsValidationStatus: EmbedsValidationStatus;
   elementsPendingErasure: ElementsPendingErasure;
+  viewBackgroundImage?: AppState["viewBackgroundImage"];
 };
 
 export type SVGRenderConfig = {

@@ -37,12 +37,13 @@ const StaticCanvas = (props: StaticCanvasProps) => {
     }
 
     const canvas = props.canvas;
-
+    // let context = null;
     if (!isComponentMounted.current) {
       isComponentMounted.current = true;
 
       wrapper.replaceChildren(canvas);
-      canvas.classList.add("excalidraw__canvas", "static");
+      // canvas.classList.add("excalidraw__canvas", "static");
+      // context = canvas.getContext("2d");
     }
 
     const widthString = `${props.appState.width}px`;
@@ -105,6 +106,8 @@ const getRelevantAppStateProps = (
   selectedElementIds: appState.selectedElementIds,
   frameToHighlight: appState.frameToHighlight,
   editingGroupId: appState.editingGroupId,
+  viewBackgroundImage: appState.viewBackgroundImage,
+  ratioBackgroundImage: appState.ratioBackgroundImage,
 });
 
 const areEqual = (

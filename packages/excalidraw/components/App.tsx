@@ -1667,13 +1667,19 @@ class App extends React.Component<AppProps, AppState> {
                             this.state.selectionElement?.versionNonce
                           }
                           scale={window.devicePixelRatio}
-                          appState={this.state}
+                          appState={{
+                            ...this.state,
+                            viewBackgroundImage:
+                              "https://img.freepik.com/premium-photo/grainy-gradient-background-red-white-blue-colors-with-soft-faded-watercolor-border-texture_927344-24167.jpg",
+                          }}
                           renderConfig={{
                             imageCache: this.imageCache,
                             isExporting: false,
                             renderGrid: true,
                             canvasBackgroundColor:
                               this.state.viewBackgroundColor,
+                            viewBackgroundImage:
+                              "https://img.freepik.com/premium-photo/grainy-gradient-background-red-white-blue-colors-with-soft-faded-watercolor-border-texture_927344-24167.jpg",
                             embedsValidationStatus: this.embedsValidationStatus,
                             elementsPendingErasure: this.elementsPendingErasure,
                           }}

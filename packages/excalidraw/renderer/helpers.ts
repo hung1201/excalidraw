@@ -71,7 +71,7 @@ export const bootstrapCanvas = ({
     if (hasTransparence) {
       context.clearRect(0, 0, normalizedWidth, normalizedHeight);
     }
-    context.save();
+
     if (viewBackgroundImage) {
       const img = new Image();
       img.src = viewBackgroundImage;
